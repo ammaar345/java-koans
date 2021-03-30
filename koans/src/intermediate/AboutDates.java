@@ -33,7 +33,7 @@ public class AboutDates {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.MONTH, 1);
-        assertEquals(cal.getTime().toString(), __);
+        assertEquals(cal.getTime().toString(), "Tue Apr 03 15:33:21 SAST 1973");
     }
 
     @Koan
@@ -41,26 +41,26 @@ public class AboutDates {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.roll(Calendar.MONTH, 12);
-        assertEquals(cal.getTime().toString(), __);
+        assertEquals(cal.getTime().toString(), "Sat Mar 03 15:33:21 SAST 1973");
     }
 
     @Koan
     public void usingDateFormatToFormatDate() {
         String formattedDate = DateFormat.getDateInstance().format(date);
-        assertEquals(formattedDate, __);
+        assertEquals(formattedDate, "03 Mar 1973");
     }
 
     @Koan
     public void usingDateFormatToFormatDateShort() {
         String formattedDate = DateFormat.getDateInstance(DateFormat.SHORT).format(date);
-        assertEquals(formattedDate, __);
+        assertEquals(formattedDate, "1973/03/03");
     }
 
     @Koan
     public void usingDateFormatToFormatDateFull() {
         String formattedDate = DateFormat.getDateInstance(DateFormat.FULL).format(date);
         // There is also DateFormat.MEDIUM and DateFormat.LONG... you get the idea ;-)
-        assertEquals(formattedDate, __);
+        assertEquals(formattedDate, "Saturday, 03 March 1973");
     }
 
     @Koan
