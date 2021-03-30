@@ -18,14 +18,14 @@ public class AboutDates {
 
     @Koan
     public void dateToString() {
-        assertEquals(date.toString(), __);
+        assertEquals(date.toString(), "Sat Mar 03 14:33:21 SAST 1973");
     }
 
     @Koan
     public void changingDateValue() {
         int oneHourInMiliseconds = 3600000;
         date.setTime(date.getTime() + oneHourInMiliseconds);
-        assertEquals(date.toString(), __);
+        assertEquals(date.toString(), "Sat Mar 03 15:33:21 SAST 1973");
     }
 
     @Koan
