@@ -17,11 +17,26 @@ public class AboutRegularExpressions {
         Pattern p = Pattern.compile("xyz");
         Matcher m = p.matcher("xyzxxxxyz");
         // index 012345678
-        assertEquals(m.find(), __);
-        assertEquals(m.start(), __);
-        assertEquals(m.find(), __);
-        assertEquals(m.start(), __);
-        assertEquals(m.find(), __);
+
+
+//        System.out.println(m.find());
+//        System.out.println(m.start());
+//
+//        System.out.println(m.find());
+//
+//        System.out.println(m.start());
+//
+//        System.out.println(m.find());
+//
+//        System.out.println(m.start());
+
+
+        assertEquals(m.find(), true);//did you find it ?
+        assertEquals(m.start(), 0);//which index did you find it
+
+        assertEquals(m.find(), true);//did you find it
+        assertEquals(m.start(), 6);//which index did you find it
+        assertEquals(m.find(), false);//not found because string end has come
     }
 
     @Koan
@@ -29,12 +44,12 @@ public class AboutRegularExpressions {
         Pattern p = Pattern.compile("x.z");
         Matcher m = p.matcher("xyz u x z u xfz");
         // index 012345678901234
-        assertEquals(m.find(), __);
-        assertEquals(m.start(), __);
-        assertEquals(m.find(), __);
-        assertEquals(m.start(), __);
-        assertEquals(m.find(), __);
-        assertEquals(m.start(), __);
+        assertEquals(m.find(), true);
+        assertEquals(m.start(), 0);
+        assertEquals(m.find(), true);
+        assertEquals(m.start(), 6);
+        assertEquals(m.find(), true);
+        assertEquals(m.start(), 12);
     }
 
     @Koan
@@ -42,16 +57,16 @@ public class AboutRegularExpressions {
         Pattern p = Pattern.compile("end\\.");
         Matcher m = p.matcher("begin. end.");
         // index 01234567890
-        assertEquals(m.find(), __);
-        assertEquals(m.start(), __);
+        assertEquals(m.find(), true);
+        assertEquals(m.start(), 7);
     }
 
     @Koan
     public void splittingStrings() {
         String csvDataLine = "1,name,description";
         String[] data = csvDataLine.split(","); // you can use any regex here
-        assertEquals(data[0], __);
-        assertEquals(data[1], __);
-        assertEquals(data[2], __);
+        assertEquals(data[0], "1");
+        assertEquals(data[1], "name");
+        assertEquals(data[2], "description");
     }
 }

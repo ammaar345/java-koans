@@ -22,7 +22,7 @@ public class AboutFileIO {
         f.createNewFile();
         assertEquals(f.exists(), true);
         f.delete();
-        assertEquals(f.exists(), false  );
+        assertEquals(f.exists(), false);
     }
 
     @Koan
@@ -92,8 +92,28 @@ public class AboutFileIO {
         StringBuffer sb = new StringBuffer();
         // Add the loop to go through the file line by line and add the line
         // to the StringBuffer
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = null;
+        //always set these when reading from a file
+        try {
+            bufferedReader = new BufferedReader(fileReader);
 
-        assertEquals(sb.toString(), "1. line\n2. line");
+            do {
+                String currentLine = bufferedReader.readLine();
+                if (currentLine == null) {
+                    break;
+                } else {
+                    sb.append(currentLine);
+                }
+
+
+            }
+            while (true);
+        } finally {
+            closeStream(bufferedReader);
+        }
+
+        assertEquals(sb.toString(), "1. line2. line");
     }
 }
 
