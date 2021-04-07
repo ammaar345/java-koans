@@ -26,6 +26,7 @@ public class AboutMocks {
         }
 
         public ClassUnderTest(Collaborator c) {
+
             this.c = c;
         }
 
@@ -34,13 +35,19 @@ public class AboutMocks {
             return true;
         }
     }
+static class Collaborator2 implements Collaborator{
 
+        public void doBusinessStuff(){
+
+        }
+}
     @Koan
     public void simpleAnonymousMock() {
         // HINT: pass a safe Collaborator implementation to constructor
         // new ClassUnderTest(new Collaborator(){... it should not be the
         // objective of this test to test that collaborator, so replace it
-        new ClassUnderTest().doSomething();
+      Collaborator Collaborator2=new Collaborator2();
+        new ClassUnderTest(Collaborator2).doSomething();
     }
 
 }

@@ -36,18 +36,24 @@ public class AboutTryWithResources {
         String str = "first line"
                 + System.lineSeparator()
                 + "second line";
+//        System.out.println(str);
         InputStream is = new ByteArrayInputStream(str.getBytes());
+
         String line;
+
         /* BufferedReader implementing @see java.lang.AutoCloseable interface */
+
         try (BufferedReader br =
                      new BufferedReader(
                              new InputStreamReader(is))) {
+
             line = br.readLine();
+
             //br guaranteed to be closed
         } catch (IOException e) {
             line = "error";
         }
-        assertEquals(line, __);
+        assertEquals(line, "first line");
     }
 
     @Koan
@@ -60,7 +66,7 @@ public class AboutTryWithResources {
         } catch (FileNotFoundException e) {
             line = "no more leaking!";
         }
-        assertEquals(line, __);
+        assertEquals(line, "no more leaking!");
     }
 
     @Koan
@@ -83,7 +89,7 @@ public class AboutTryWithResources {
         } catch (IOException e) {
             line = "error";
         }
-        assertEquals(line, __);
+        assertEquals(line, "error");
     }
 
     @Koan
@@ -91,12 +97,18 @@ public class AboutTryWithResources {
         String message = "";
         try {
             bar();
-        } catch (WorkException e) {
-            message += e.getMessage() + " " + e.getSuppressed()[0].getMessage();
-        } catch (CloseException e) {
-            message += e.getMessage();
         }
-        assertEquals(message, __);
+        catch (WorkException e) {
+
+            message += e.getMessage() + " " + e.getSuppressed()[0].getMessage();
+        }
+        catch (CloseException e) {
+
+            message += e.getMessage();
+
+        }
+
+        assertEquals(message, "Exception thrown while working Exception thrown while closing");
     }
 
 

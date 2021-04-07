@@ -19,7 +19,7 @@ public class AboutRequireNotNull {
         } catch (NullPointerException ex) {
             s = "caught a NullPointerException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "caught a NullPointerException");
     }
 
     @Koan
@@ -27,12 +27,15 @@ public class AboutRequireNotNull {
         // This koan demonstrates the use of Objects.requireNotNull
         // in place of traditional argument validation using exceptions
         String s = "";
+
         try {
+
             s += validateUsingRequireNotNull("valid");
+            System.out.println(s);
         } catch (NullPointerException ex) {
             s = "caught a NullPointerException";
         }
-        assertEquals(s, __);
+        assertEquals(s, "5");
     }
 
     private int validateUsingRequireNotNull(String str) {
